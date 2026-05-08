@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'providers/wardrobe_provider.dart';
-import 'screens/home_screen.dart';
+import 'screens/terminal_screen.dart';
+import 'theme/hacker_theme.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
   runApp(const MyApp());
 }
 
@@ -13,24 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => WardrobeProvider()),
-      ],
-      child: MaterialApp(
-        title: 'StyleStack - Estilos de Ropa',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF2196F3)),
-          useMaterial3: true,
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Color(0xFF2196F3),
-            foregroundColor: Colors.white,
-            elevation: 0,
-          ),
-        ),
-        home: const HomeScreen(),
-        debugShowCheckedModeBanner: false,
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: hackerTheme,
+      home: const TerminalScreen(),
     );
   }
 }
