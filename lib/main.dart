@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'providers/wardrobe_provider.dart';
 import 'screens/home_screen.dart';
 import 'screens/lock_screen.dart';
+import 'screens/terminal_screen.dart';
+import 'theme/hacker_theme.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
   runApp(const MyApp());
 }
 
@@ -19,18 +21,19 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => WardrobeProvider()),
       ],
       child: MaterialApp(
-        title: 'StyleStack - Estilos de Ropa',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF2196F3)),
-          useMaterial3: true,
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Color(0xFF2196F3),
-            foregroundColor: Colors.white,
-            elevation: 0,
-          ),
-        ),
-        home: const LockScreen(),
         debugShowCheckedModeBanner: false,
+
+        // 🔥 Usamos el tema hacker (de Angie)
+        theme: hackerTheme,
+
+        // 🔥 Flujo correcto:
+        // Terminal → Lock → Home
+        home: const TerminalScreen(),
+
+        routes: {
+          '/lock': (context) => const LockScreen(),
+          '/home': (context) => const HomeScreen(),
+        },
       ),
     );
   }
