@@ -1,7 +1,20 @@
+import 'package:flutter/material.dart';
+import 'screens/terminal_screen.dart';
 import 'theme/hacker_theme.dart';
 
-MaterialApp(
-  debugShowCheckedModeBanner: false,
-  theme: hackerTheme,
-  home: const HomeScreen(),
-)
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: hackerTheme,
+      home: const TerminalScreen(),
+    );
+  }
+}
